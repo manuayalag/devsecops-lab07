@@ -55,7 +55,7 @@ pipeline {
                         --severity CRITICAL \
                         --exit-code 1 \
                         --no-progress \
-                        ${IMAGE_NAME}:${IMAGE_TAG} || true
+                        ${IMAGE_NAME}:${IMAGE_TAG}
                 """
             }
         }
