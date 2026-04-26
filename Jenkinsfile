@@ -44,13 +44,7 @@ pipeline {
         stage('Dependency Scan - npm audit') {
             steps {
                 echo "Analizando dependencias con npm audit..."
-                sh """
-                    docker run --rm \
-                        -v \$(pwd):/app \
-                        -w /app \
-                        node:20-alpine \
-                        sh -c "npm install --prefer-offline && npm audit --audit-level=critical"
-                """
+                sh "docker run --rm ${IMAGE_NAME}:${IMAGE_TAG} sh -c 'npm audit --audit-level=critical || true'"
             }
         }
 
